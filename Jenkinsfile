@@ -8,9 +8,10 @@ pipeline {
 		sh "mvn package"
             }
         }
-        stage('Test') {
+        stage('BUILD_IMAGE') {
             steps {
-                echo 'Testing..'
+                echo 'STAGE: BUILD_IMAGE'
+		sh "docker build -t train-project-img:1.0 ."
             }
         }
         stage('Deploy') {
