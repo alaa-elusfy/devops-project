@@ -11,12 +11,16 @@ pipeline {
         stage('BUILD_IMAGE') {
             steps {
                 echo 'STAGE: BUILD_IMAGE'
-		sh "docker build -t train-project-img:1.0 ."
+		sh "docker build -t alaaelusfy/train-application::1.0 ."
             }
         }
-        stage('Deploy') {
+        stage('PUSH_IMAGE') {
             steps {
-                echo 'Deploying....'
+                echo 'STAGE: PUSH_IMAGE'
+		withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+        		echo "User: ${USER}"
+        		echo "Password: ${PASSWORD}"
+    		}
             }
         }
     }
