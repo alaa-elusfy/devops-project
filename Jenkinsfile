@@ -5,10 +5,7 @@ pipeline {
         SONAR_HOST_URL = 'http://localhost:9000'
         SONAR_PROJECT_KEY = 'train-project'
         SONAR_PROJECT_NAME = 'train-project'
-    }
-
-    tools {
-        sonarQube 'SonarQubeScanner'
+        sonarQube 'SonarQube'
     }
 
     stages {
