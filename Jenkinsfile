@@ -1,11 +1,30 @@
 pipeline {
     agent any
 
+    environment {
+        SONAR_HOST_URL = 'http://localhost:9000'
+        SONAR_PROJECT_KEY = 'train-project'
+        SONAR_PROJECT_NAME = 'train-project'
+    }
+
+    tools {
+        sonarQube 'SonarQubeScanner'
+    }
+
     stages {
         stage('PACKAGE') {
             steps {
                 echo 'STAGE: PACKAGE'
 		sh "mvn package"
+            }
+        }
+        stage('TEST') {
+            steps {
+		script {
+			withSonarQubeEnv('SonarQube') {
+                        sh "mvn sonar:sonar -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.projectName=${SONAR_PROJECT_NAME}"
+                    }
+		}
             }
         }
         stage('BUILD_IMAGE') {
