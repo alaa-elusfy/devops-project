@@ -18,8 +18,8 @@ pipeline {
             steps {
                 echo 'STAGE: PUSH_IMAGE'
 		withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
-        		echo "User: ${USER}"
-        		echo "Password: ${PASSWORD}"
+			sh "docker login -u ${USER} -p ${PASSWORD}"
+			sh "docker push alaaelusfy/train-application:1.0"
     		}
             }
         }
