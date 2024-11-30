@@ -22,11 +22,11 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: "${NEXUS_CREDENTIALS_ID}", usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
                         sh """
                             mvn deploy \
-			    -s /home/yousfi/.m2/settings.xml \
+			    -s $HOME/.m2/settings.xml \
                             -DskipTests \
                             -DnexusUsername=${NEXUS_USERNAME} \
                             -DnexusPassword=${NEXUS_PASSWORD} \
-                            -Dmaven.repo.local=/home/yousfi/.m2/repository
+                            -Dmaven.repo.local=$HOME/.m2/repository
                         """
                     }
                 }
