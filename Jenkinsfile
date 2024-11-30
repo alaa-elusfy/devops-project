@@ -17,9 +17,9 @@ pipeline {
         }
         stage('TEST') {
             steps {
+		echo "TEST"
 		}
             }
-        }
         stage('BUILD_IMAGE') {
             steps {
                 echo 'STAGE: BUILD_IMAGE'
