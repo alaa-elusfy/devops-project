@@ -7,6 +7,7 @@ pipeline {
         SONAR_PROJECT_NAME = 'train-project'
     }
 
+
     stages {
         stage('PACKAGE') {
             steps {
