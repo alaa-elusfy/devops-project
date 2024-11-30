@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    tools {
-	maven "MAVEN"
-    }
     environment {
-        // Set your Nexus credentials
         NEXUS_URL = 'https://127.0.0.1:8081/repository/maven-snapshots'
         NEXUS_CREDENTIALS_ID = 'nexus-cred'
     }
