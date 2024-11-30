@@ -11,7 +11,7 @@ pipeline {
         stage('BUILD_IMAGE') {
             steps {
                 echo 'STAGE: BUILD_IMAGE'
-		sh "docker build -t alaaelusfy/train-application::1.0 ."
+		sh "docker build -t alaaelusfy/train-application:1.0 ."
             }
         }
         stage('PUSH_IMAGE') {
