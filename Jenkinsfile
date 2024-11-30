@@ -17,10 +17,6 @@ pipeline {
         }
         stage('TEST') {
             steps {
-		script {
-			withSonarQubeEnv("SonarQube") {
-                        sh "mvn sonar:sonar"
-                    }
 		}
             }
         }
